@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, } from "react-native";
+import { Icon } from 'react-native-elements'
 
-const SearchByCountry = () => {
+const SearchByCountry = ( { navigation} ) => {
   return (
     <View style={styles.container}>
       <Text>SearchByCountry</Text>
@@ -9,7 +10,7 @@ const SearchByCountry = () => {
         name='search'
         style={styles.icon}
         size={60}
-        onPress={() => navigation.navigate("population")}
+        onPress={() => navigation.navigate("topCities")}
         />
     </View>
   );

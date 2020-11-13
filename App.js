@@ -7,6 +7,7 @@ import Homepage from "./screens/Homepage";
 import SearchByCity from './screens/SearchByCity';
 import SearchByCountry from './screens/searchByCountry';
 import Population from './screens/Population';
+import TopCities from './screens/TopCities';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ function MyStack() {
       <Stack.Screen name="searchByCity" component={SearchByCity} />
       <Stack.Screen name="searchByCountry" component={SearchByCountry} />
       <Stack.Screen name="population" component={Population} />
+      <Stack.Screen name="topCities" component={TopCities} />
     </Stack.Navigator>
     </NavigationContainer>
   );
