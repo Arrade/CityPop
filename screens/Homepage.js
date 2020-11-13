@@ -8,10 +8,10 @@ const Homepage = ( { navigation } ) => {
     <View style={styles.container}>
       <Text>CityPop</Text>
       <View style={styles.button}>    
-        <BlueButton onPress={() => navigation.navigate("searchByCity")}>FORTSÄTT</BlueButton>
+        <BlueButton onPress={() => navigation.navigate("searchByCity")}>SEARCH BY CITY</BlueButton>
         </View>
         <View style={styles.button}> 
-        <BlueButton onPress={() => navigation.navigate("searchByCity")}>FORTSÄTT</BlueButton>
+        <BlueButton onPress={() => navigation.navigate("searchByCountry")}>SEARCH BY COUNTRY</BlueButton>
       </View>
     </View>
   );
