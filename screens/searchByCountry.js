@@ -5,6 +5,12 @@ const SearchByCountry = () => {
   return (
     <View style={styles.container}>
       <Text>SearchByCountry</Text>
+      <Icon
+        name='search'
+        style={styles.icon}
+        size={60}
+        onPress={() => navigation.navigate("population")}
+        />
     </View>
   );
 };
