@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, } from "react-native";
 
-const TopCities = () => {
+const TopCities = ( {navigation} ) => {
   return (
     <View style={styles.container}>
-      <Text>TopCities</Text>
+      <Text onPress={() => navigation.navigate("population")}>TopCities</Text>
     </View>
   );
 };
