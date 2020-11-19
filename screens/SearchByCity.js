@@ -17,10 +17,11 @@ const SearchByCity = ( {navigation} ) => {
     fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit')
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.geonames);
+        console.log(response);
+        //console.log(response.geonames);
         //return setData(json.geonames); // Outdated, change this
         navigation.navigate("population", {
-          data: response.geonames
+          data: response.geonames[0]
         });
       })
       .catch((error) => console.error(error))
