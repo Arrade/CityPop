@@ -9,6 +9,7 @@ const SearchByCountry = ( { navigation} ) => {
     const [value, onChangeText] = React.useState('');
     const [isLoading, setLoading] = useState(true);
     const [load, setLoad] = React.useState(false);
+    const [noResult, showNoResultMsg] = React.useState(false);
 
     function fetchApi(arg) {
         //fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=3&username=weknowit')
@@ -21,9 +22,14 @@ const SearchByCountry = ( { navigation} ) => {
             console.log(response.geonames);
             //return setData(json.geonames); // Outdated, change this
             setLoad(false)
-            navigation.navigate("topCities", {
-              data: response.geonames
-            });
+            // Handle illegal cases
+            if (response.totalResultsCount > 0 && arg != '') {
+                navigation.navigate("topCities", {
+                  data: response.geonames
+                });
+            } else {
+                showNoResultMsg(true);
+              }
           })
           .catch((error) => console.error(error))
           .finally(() => setLoading(false));
@@ -56,6 +62,7 @@ const SearchByCountry = ( { navigation} ) => {
         />
         </View>
         {load && <ActivityIndicator size='large' color="#00ff00"/>}
+        {noResult && <Text>No search results found</Text>}
     </View>
   );
 };

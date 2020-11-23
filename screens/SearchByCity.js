@@ -10,23 +10,29 @@ const SearchByCity = ( {navigation} ) => {
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [pop, setPop] = React.useState('');
+  //const [pop, setPop] = React.useState('');
   //console.log(data)
   const [load, setLoad] = React.useState(false);
+  const [noResult, showNoResultMsg] = React.useState(false);
 
   const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
   
+  //Fetches API response based on on search term arg
   function fetchApi(arg) {
     fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit')
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
         //console.log(response.geonames);
-        //return setData(json.geonames); // Outdated, change this
         setLoad(false)
+        // Handle illegal cases
+        if (response.totalResultsCount > 0 && arg != '') {
         navigation.navigate("population", {
           data: response.geonames[0]
         });
+        } else {
+          showNoResultMsg(true);
+        }
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -58,14 +64,14 @@ const SearchByCity = ( {navigation} ) => {
       <Icon
         name='search'
         size={60}
-        //onPress={() => pressFunction(value)} // Outdated, remove
         //onPress={() => fetchApi(value)}
         onPress={() => pressFunction(value)}
         />
         </View>
-      {data.map(test => <Text key={test.geonameId}>{test.population}</Text>)}
+      {/* {data.map(test => <Text key={test.geonameId}>{test.population}</Text>)} */}
       <Text>{value}</Text>
       {load && <ActivityIndicator size='large' color="#00ff00"/>}
+      {noResult && <Text>No search results found</Text>}
       </View>
       </ImageBackground>
     </View>
@@ -77,13 +83,12 @@ const styles = StyleSheet.create({
         //marginTop: 200,
         //alignItems: "center",
     },
-
     icon: {
         marginTop: 50,
     },
     innerContainer: {
       marginTop: 200,
-  },
+    },
 
     inputContainer2: {
         marginTop: 50,
