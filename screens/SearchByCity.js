@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Input, ActivityIndicator, FlatList, } from "react-native";
+import { View, Text, StyleSheet, Input, ActivityIndicator, FlatList, ImageBackground} from "react-native";
 import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native';
 import { useEffect, useState } from 'react';
@@ -12,6 +12,8 @@ const SearchByCity = ( {navigation} ) => {
   const [data, setData] = useState([]);
   const [pop, setPop] = React.useState('');
   //console.log(data)
+
+  const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
   
   function fetchApi(arg) {
     fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit')
@@ -52,9 +54,12 @@ const SearchByCity = ( {navigation} ) => {
 
   return (
     <View style={styles.container}>
+      
+      <ImageBackground source={image} style={styles.image} fadeDuration={3}>
+        <View style={styles.innerContainer}>
       <Text>SearchByCity</Text>
 
-      <View style={styles.inputContainer}>
+      <View style={styles.inputContainer2}>
       <TextInput 
         clearTextOnFocus={true}
         clearButtonMode={'while-editing'}
@@ -74,21 +79,26 @@ const SearchByCity = ( {navigation} ) => {
         </View>
       {data.map(test => <Text key={test.geonameId}>{test.population}</Text>)}
       <Text>{value}</Text>
+      </View>
+      </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 200,
-        alignItems: "center",
+        //marginTop: 200,
+        //alignItems: "center",
     },
 
     icon: {
         marginTop: 50,
     },
+    innerContainer: {
+      marginTop: 200,
+  },
 
-    inputContainer: {
+    inputContainer2: {
         marginTop: 50,
     },
 
@@ -99,6 +109,11 @@ const styles = StyleSheet.create({
       width: 300,
       borderRadius: 25,
       textAlign: 'center',
+    },
+    image: {
+      width: '100%',
+      height: '100%',
+      alignItems: "center",
     },
 })
 

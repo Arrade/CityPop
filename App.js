@@ -12,11 +12,15 @@ import TopCities from './screens/TopCities';
 const Stack = createStackNavigator();
 
 function MyStack() {
+
   return (
     <NavigationContainer>
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
+        
       }}
     >
       <Stack.Screen name="home" component={Homepage} />

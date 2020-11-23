@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, } from "react-native";
 import { Icon } from 'react-native-elements'
-import { TextInput } from 'react-native';
+import { TextInput, Image } from 'react-native';
 import { useEffect, useState } from 'react';
 
 const SearchByCountry = ( { navigation} ) => {
@@ -30,7 +30,6 @@ const SearchByCountry = ( { navigation} ) => {
   return (
     <View style={styles.container}>
       <Text>SearchByCountry</Text>
-
       <View style={styles.inputContainer}>
       <TextInput 
         clearTextOnFocus={true}
