@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, } from "react-native";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { Icon } from 'react-native-elements'
 import { TextInput, Image } from 'react-native';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,7 @@ const SearchByCountry = ( { navigation} ) => {
 
     const [value, onChangeText] = React.useState('');
     const [isLoading, setLoading] = useState(true);
+    const [load, setLoad] = React.useState(false);
 
     function fetchApi(arg) {
         //fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=3&username=weknowit')
@@ -19,12 +20,18 @@ const SearchByCountry = ( { navigation} ) => {
             //console.log(response);
             console.log(response.geonames);
             //return setData(json.geonames); // Outdated, change this
+            setLoad(false)
             navigation.navigate("topCities", {
               data: response.geonames
             });
           })
           .catch((error) => console.error(error))
           .finally(() => setLoading(false));
+      }
+
+      const pressFunction = async (arg) => {
+        setLoad(!load)
+        await fetchApi(arg)
       }
 
   return (
@@ -44,9 +51,11 @@ const SearchByCountry = ( { navigation} ) => {
       <Icon
         name='search'
         size={60}
-        onPress={() => fetchApi(value)}
+        //onPress={() => fetchApi(value)}
+        onPress={() => pressFunction(value)}
         />
         </View>
+        {load && <ActivityIndicator size='large' color="#00ff00"/>}
     </View>
   );
 };

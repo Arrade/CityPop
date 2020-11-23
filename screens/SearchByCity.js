@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Input, ActivityIndicator, FlatList, ImageBackground} from "react-native";
+import { View, Text, StyleSheet, Input, ActivityIndicator, ImageBackground} from "react-native";
 import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native';
 import { useEffect, useState } from 'react';
@@ -12,6 +12,7 @@ const SearchByCity = ( {navigation} ) => {
   const [data, setData] = useState([]);
   const [pop, setPop] = React.useState('');
   //console.log(data)
+  const [load, setLoad] = React.useState(false);
 
   const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
   
@@ -22,6 +23,7 @@ const SearchByCity = ( {navigation} ) => {
         console.log(response);
         //console.log(response.geonames);
         //return setData(json.geonames); // Outdated, change this
+        setLoad(false)
         navigation.navigate("population", {
           data: response.geonames[0]
         });
@@ -30,25 +32,8 @@ const SearchByCity = ( {navigation} ) => {
       .finally(() => setLoading(false));
   }
 
-
-      // Outdated, keep this until async awaits have been added in fetchApi
-  /*
-  const fun2 = async (arg) => {
-    try {
-      let response = await fetch(
-        'https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit'
-      );
-      let json = await response.json();
-      return await setData(json.geonames);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-*/
-
   const pressFunction = async (arg) => {
+    setLoad(!load)
     await fetchApi(arg)
   }
 
@@ -74,11 +59,13 @@ const SearchByCity = ( {navigation} ) => {
         name='search'
         size={60}
         //onPress={() => pressFunction(value)} // Outdated, remove
-        onPress={() => fetchApi(value)}
+        //onPress={() => fetchApi(value)}
+        onPress={() => pressFunction(value)}
         />
         </View>
       {data.map(test => <Text key={test.geonameId}>{test.population}</Text>)}
       <Text>{value}</Text>
+      {load && <ActivityIndicator size='large' color="#00ff00"/>}
       </View>
       </ImageBackground>
     </View>
