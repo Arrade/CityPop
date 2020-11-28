@@ -24,7 +24,8 @@ function MyStack() {
         headerShown: false,
         gestureEnabled: true,
         gestureDirection: "horizontal",
-        cardStyleInterpolator: nothing,
+        //cardStyleInterpolator: nothing,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
       }}
     >
       <Stack.Screen name="home" component={Homepage} />
