@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ActivityIndicator, ImageBackground } from "reac
 import { Icon } from 'react-native-elements'
 import { TextInput, Image } from 'react-native';
 import { useEffect, useState } from 'react';
+import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 
 const SearchByCountry = ( { navigation} ) => {
 
@@ -46,10 +47,24 @@ const SearchByCountry = ( { navigation} ) => {
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image} fadeDuration={0}>
 
+      <View style={styles.iconBack}>
+      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("home")}>
+      <View style={styles.iconBack2}>
+      <Icon
+        name='home'
+        size={30}
+        color='black'
+        //onPress={() => navigation.navigate("home")}
+      />
+      <Text style={{fontSize: 20, color: 'black'}}>Home</Text>
+      </View>
+      </TouchableOpacity>
+      </View>
+
       <View style={styles.content}>
       <View style={styles.innerContainer}>
 
-      <Text style={styles.title}>SearchByCountry</Text>
+      <Text style={styles.title}>Search With Country</Text>
       <View style={styles.inputContainer2}>
       <TextInput 
         clearTextOnFocus={true}

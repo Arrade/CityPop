@@ -20,7 +20,8 @@ const SearchByCity = ( {navigation} ) => {
   
   //Fetches API response based on on search term arg
   function fetchApi(arg) {
-    fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit')
+    //fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit')
+    fetch('http://api.geonames.org/searchJSON?name=' + arg + '&featureClass=P&maxRows=1&username=weknowit')
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -65,7 +66,7 @@ const SearchByCity = ( {navigation} ) => {
 
       <View style={styles.innerContainer}>
 
-      <Text style={styles.title}>Search with city</Text>
+      <Text style={styles.title}>Search With City</Text>
 
       <View style={styles.inputContainer2}>
       <TextInput 
