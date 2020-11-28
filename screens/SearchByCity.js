@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Input, ActivityIndicator, ImageBackground} from
 import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native';
 import { useEffect, useState } from 'react';
+import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 
 const SearchByCity = ( {navigation} ) => {
 
@@ -46,9 +47,25 @@ const SearchByCity = ( {navigation} ) => {
   return (
     <View style={styles.container}>
       
-      <ImageBackground source={image} style={styles.image} fadeDuration={3}>
-        <View style={styles.innerContainer}>
-      <Text>SearchByCity</Text>
+      <ImageBackground source={image} style={styles.image} fadeDuration={0}>
+      <View style={styles.iconBack}>
+      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("home")}>
+      <View style={styles.iconBack2}>
+      <Icon
+        name='home'
+        size={30}
+        color='black'
+        //onPress={() => navigation.navigate("home")}
+      />
+      <Text style={{fontSize: 20, color: 'black'}}>Home</Text>
+      </View>
+      </TouchableOpacity>
+      </View>
+      <View style={styles.content}>
+
+      <View style={styles.innerContainer}>
+
+      <Text style={styles.title}>Search with city</Text>
 
       <View style={styles.inputContainer2}>
       <TextInput 
@@ -68,10 +85,9 @@ const SearchByCity = ( {navigation} ) => {
         onPress={() => pressFunction(value)}
         />
         </View>
-      {/* {data.map(test => <Text key={test.geonameId}>{test.population}</Text>)} */}
-      <Text>{value}</Text>
-      {load && <ActivityIndicator size='large' color="#00ff00"/>}
       {noResult && <Text>No search results found</Text>}
+      {load && <ActivityIndicator size='large' color="#00ff00"/>}
+      </View>
       </View>
       </ImageBackground>
     </View>
@@ -79,33 +95,81 @@ const SearchByCity = ( {navigation} ) => {
 };
 
 const styles = StyleSheet.create({
+    iconBack: {
+        width: 120,
+        height: 50,
+        marginTop: 60,
+        marginLeft: 30,
+        borderColor: '#AAAAAA',
+        borderWidth: 1,
+        borderRadius: 20,
+        backgroundColor: '#FFFFFF',
+        opacity: 0.75,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    touchable: {
+        borderRadius: 20,
+    },
+    iconBack2: {
+        marginLeft: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     container: {
         //marginTop: 200,
         //alignItems: "center",
     },
     icon: {
-        marginTop: 50,
+        /*
+        width: 80,
+        height: 80,
+        alignItems: 'center',
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: 'teal',
+        borderRadius: 50,
+        */
+        marginTop: 20,
+    },
+    title: {
+      marginTop: 15,
+      fontSize: 20,
     },
     innerContainer: {
-      marginTop: 200,
-    },
+      width: 300,
+      height: 250,
+      alignItems: 'center',
+      borderColor: 'black',
+      borderWidth: 10,
+      borderColor: '#AAAAAA',
+      borderWidth: 1,
+      borderRadius: 20,
+      opacity: 0.75,
 
+      backgroundColor: '#FFFFFF',
+      
+      marginTop: 100,
+    },
+    content: {
+      alignItems: 'center'
+    },
     inputContainer2: {
-        marginTop: 50,
+        marginTop: 20,
     },
 
     input: {
       borderWidth: 1,
       borderColor: 'teal',
       height: 40,
-      width: 300,
+      width: 250,
       borderRadius: 25,
       textAlign: 'center',
     },
     image: {
       width: '100%',
       height: '100%',
-      alignItems: "center",
+      //alignItems: "center",
     },
 })
 
