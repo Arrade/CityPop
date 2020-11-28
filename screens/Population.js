@@ -28,15 +28,17 @@ const Population = ( {route, navigation} ) => {
         </TouchableOpacity>
         </View>
             
+        <View style={styles.content}>
         <View style={styles.innerContainer}>
 
-        <Text style={styles.title} onPress={() => navigation.navigate("topCities")}>Population of {data.toponymName}</Text>
+        <Text style={styles.title} onPress={() => navigation.navigate("topCities")}>Population of{data.toponymName}</Text>
 
         <View style={styles.populationContainer}>
             {/*
             {data.map(test => <Text key={test.geonameId} style={styles.population}>{test.population}</Text>)}
                 */}
             <Text style={styles.population}>{data.population}</Text>
+        </View>
         </View>
         </View>
         </ImageBackground>
@@ -61,6 +63,9 @@ const styles = StyleSheet.create({
     touchable: {
         borderRadius: 20,
     },
+    content: {
+        alignItems: 'center'
+      },
     iconBack2: {
         marginLeft: 10,
         flexDirection: 'row',
@@ -71,10 +76,22 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     innerContainer: {
-        marginTop: 300,
+        width: 300,
+        height: 250,
         alignItems: 'center',
-    },
+        borderColor: 'black',
+        borderWidth: 10,
+        borderColor: '#AAAAAA',
+        borderWidth: 1,
+        borderRadius: 20,
+        opacity: 0.75,
+  
+        backgroundColor: '#FFFFFF',
+        
+        marginTop: 100,
+      },
     title: {
+        marginTop: 15,
         fontSize: 20,
     },
     population: {
@@ -82,6 +99,8 @@ const styles = StyleSheet.create({
     },
     populationContainer: {
         borderWidth: 1,
+        borderRadius: 20,
+        borderColor: 'teal',
         width: 200,
         height: 100,
         alignItems: 'center',

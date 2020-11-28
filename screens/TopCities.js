@@ -9,6 +9,7 @@ const TopCities = ( {navigation, route} ) => {
     const { data } = route.params;
 
     const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
+    //console.log(data)
 
   return (
     <View style={styles.container}>
@@ -29,17 +30,14 @@ const TopCities = ( {navigation, route} ) => {
         </View>
 
       <View style={styles.content}>
-      <Text onPress={() => navigation.navigate("population")}>TopCities</Text>
-      {data!=null && data.map((test, index) => <View key={test.geonameId} index={index} style={styles.button}><BlueButton onPress={() => navigation.navigate("population", {data: data[index]})} key={test.geonameId} style={styles.button}>{test.adminName1}</BlueButton></View>)}
+      
+  <Text style={styles.title} onPress={() => navigation.navigate("population")}>Which city do you wish to lookup?</Text>
+      {data!=null && data.map((test, index) => <View key={test.geonameId} index={index} style={styles.button}><BlueButton onPress={() => navigation.navigate("population", {data: data[index]})} key={test.geonameId} style={styles.button}>{test.toponymName}</BlueButton></View>)}
       </View>
       </ImageBackground>
     </View>
   );
 };
-
-function nextIndex(index) {
-    return index
-}
 
 const styles = StyleSheet.create({
       iconBack: {
@@ -58,6 +56,11 @@ const styles = StyleSheet.create({
     touchable: {
         borderRadius: 20,
     },
+    title: {
+      marginTop: 15,
+      fontSize: 20,
+      color: 'white',
+    },
     iconBack2: {
         marginLeft: 10,
         flexDirection: 'row',
@@ -73,11 +76,11 @@ const styles = StyleSheet.create({
       //alignItems: "center",
     },
     content: {
-      marginTop: 150,
+      marginTop: 50,
       alignItems: 'center'
     },
     button: {
-        marginTop:50,
+        marginTop: 50,
     },
 })
 
