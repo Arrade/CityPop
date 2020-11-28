@@ -15,10 +15,12 @@ const SearchByCountry = ( { navigation} ) => {
     const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
 
     function fetchApi(arg) {
-        //fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=3&username=weknowit')
-        //fetch('http://api.geonames.org/searchJSON?name=' + arg + '&featureClass=A&orderby=population&maxRows=1&username=weknowit')
-        //fetch('http://api.geonames.org/searchJSON?country=' + countryCode + '&featureClass=P&orderby=population&maxRows=' + maxResults + '&username=weknowit')
-        fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&featureClass=P&orderby=population&maxRows=3&username=weknowit')
+
+      const abortController = new AbortController()
+      const signal = abortController.signal
+      
+      setTimeout(() => abortController.abort(), 2000);
+        fetch('http://api.geonames.org/searchJSON?country=' + arg + '&featureClass=P&orderby=population&maxRows=3&username=weknowit', {signal: signal })
           .then((response) => response.json())
           .then((response) => {
             //console.log(response);
@@ -38,9 +40,32 @@ const SearchByCountry = ( { navigation} ) => {
           .finally(() => setLoading(false));
       }
 
+      function fetchCountryCode(arg) {
+        
+        const abortController = new AbortController()
+        const signal = abortController.signal
+        
+        setTimeout(() => abortController.abort(), 2000);
+        fetch('http://api.geonames.org/searchJSON?name=' + arg + '&featureClass=A&orderby=population&maxRows=1&username=weknowit', {signal: signal })
+        .then((response) => response.json())
+          .then((response) => {
+            setLoad(false)
+            // Handle illegal cases
+            if (response.totalResultsCount > 0 && arg != '') {
+                fetchApi(response.geonames[0].countryCode)
+            } else {
+                showNoResultMsg(true);
+                setTimeout(() => showNoResultMsg(false), 2000);
+              }
+          })
+          .catch((error) => console.error(error))
+          .finally(() => setLoading(false));
+      }
+
       const pressFunction = async (arg) => {
         setLoad(!load)
-        await fetchApi(arg)
+        //await fetchApi(arg)
+        await fetchCountryCode(arg)
       }
 
   return (

@@ -3,16 +3,12 @@ import { View, Text, StyleSheet, Input, ActivityIndicator, ImageBackground} from
 import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native';
 import { useEffect, useState } from 'react';
-import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SearchByCity = ( {navigation} ) => {
 
   const [value, onChangeText] = React.useState('');
-
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  //const [pop, setPop] = React.useState('');
-  //console.log(data)
+  const [isLoading, setLoading] = React.useState(true);
   const [load, setLoad] = React.useState(false);
   const [noResult, showNoResultMsg] = React.useState(false);
 
@@ -20,8 +16,13 @@ const SearchByCity = ( {navigation} ) => {
   
   //Fetches API response based on on search term arg
   function fetchApi(arg) {
+
+    const abortController = new AbortController()
+    const signal = abortController.signal
+
     //fetch('https://secure.geonames.org/searchJSON?q=' + arg + '&maxRows=1&username=weknowit')
-    fetch('http://api.geonames.org/searchJSON?name=' + arg + '&featureClass=P&maxRows=1&username=weknowit')
+    setTimeout(() => abortController.abort(), 2000);
+    fetch('http://api.geonames.org/searchJSON?name=' + arg + '&featureClass=P&maxRows=1&username=weknowit', {signal: signal })
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -34,11 +35,13 @@ const SearchByCity = ( {navigation} ) => {
         });
         } else {
           showNoResultMsg(true);
+          setTimeout(() => showNoResultMsg(false), 2000);
         }
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }
+
 
   const pressFunction = async (arg) => {
     setLoad(!load)
