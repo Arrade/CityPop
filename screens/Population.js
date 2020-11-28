@@ -5,7 +5,7 @@ const Population = ( {route, navigation} ) => {
     
     const { data } = route.params;
 
-    const image = { uri: "https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/4k/preview/08.jpg" };
+    const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
 
   return (
       

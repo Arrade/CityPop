@@ -157,7 +157,6 @@ const styles = StyleSheet.create({
     inputContainer2: {
         marginTop: 20,
     },
-
     input: {
       borderWidth: 1,
       borderColor: 'teal',
