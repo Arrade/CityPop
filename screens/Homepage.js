@@ -2,13 +2,13 @@ import React from "react";
 import { ImageBackground, View, Text, StyleSheet, } from "react-native";
 import BlueButton from "../components/BlueButton";
 
-const Homepage = ( { navigation } ) => {
+import Background from '../assets/background.png';
 
-const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
+const Homepage = ( { navigation } ) => {
 
   return (
     <View style={styles.container}>
-    <ImageBackground source={image} style={styles.image}>
+    <ImageBackground source={Background} style={styles.image}>
         <View style={styles.innerContainer}>
       <Text style={styles.title}>CityPop</Text>
       <Text style={styles.introText}>Welcome to CityPop!{'\n'}The best way to lookup population count{'\n'}of all your favourite cities across the world!</Text>
@@ -26,8 +26,7 @@ const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
 
 const styles = StyleSheet.create({
     container: {
-        //marginTop: 200,
-        //alignItems: "center",
+      
     },
     innerContainer: {
         marginTop: 100,

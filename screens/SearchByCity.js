@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native';
 import { useEffect, useState } from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Background from '../assets/background.png';
 
 const SearchByCity = ( {navigation} ) => {
 
@@ -11,8 +12,6 @@ const SearchByCity = ( {navigation} ) => {
   const [isLoading, setLoading] = React.useState(true);
   const [load, setLoad] = React.useState(false);
   const [noResult, showNoResultMsg] = React.useState(false);
-
-  const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
 
   //Fetches API response based on on search term arg
   function fetchApi(arg) {
@@ -51,7 +50,7 @@ const SearchByCity = ( {navigation} ) => {
   return (
     <View style={styles.container}>
       
-      <ImageBackground source={image} style={styles.image} fadeDuration={0}>
+      <ImageBackground source={Background} style={styles.image} fadeDuration={0}>
       <View style={styles.backIconContainer}>
       <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("home")}>
       <View style={styles.backIcon}>

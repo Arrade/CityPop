@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet, ImageBackground} from "react-native";
 import { Icon } from 'react-native-elements'
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Background from '../assets/background.png';
 
 const Population = ( {route, navigation} ) => {
     
     const { data } = route.params;
 
-    const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
-
   return (
       
     <View style={styles.container}>
-        <ImageBackground source={image} style={styles.image}>
+        <ImageBackground source={Background} style={styles.image}>
 
         <View style={styles.backIconContainer}>
         <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("home")}>
