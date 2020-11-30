@@ -7,17 +7,13 @@ or based on a country name to then choose between that corresponding country's b
 
 # Usage Example
 
-Solarized dark             |  Solarized Ocean
+Homepage             |  Search By City | Population from City
 :-------------------------:|:-------------------------:
-![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Homepage.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Citysearch.png)
+![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Homepage.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Citysearch.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCity.png)
 
-![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Homepage.png "Homepage")
-![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Citysearch.png "Citysearch")
-![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCity.png "PopulationFromCity")
-
-![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png "PopulationFromCountry")
-![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/TopCities.png "TopCities")
-![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png "PopulationFromCountry")
+Search By Country             |  Top Cities | Population from Country
+:-------------------------:|:-------------------------:
+![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/TopCities.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png)
 
 # prerequisites
 Make sure you have the latest version of NodeJS installed, Download [here](https://nodejs.org/en/download/)
