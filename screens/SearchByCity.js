@@ -27,7 +27,7 @@ const SearchByCity = ( {navigation} ) => {
         setLoad(false)
         console.log(response.geonames)
         // Handle illegal cases, to allow searches limited to letter only words
-        if (response.totalResultsCount > 0 && arg != '' && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
+        if (response.totalResultsCount > 0 && arg != '' && arg.match(/^\p{Lu}\p{L}*(?:[\s-]\p{Lu}\p{L}*)*$/)) {
         navigation.navigate("population", {
           data: response.geonames[0]
         });

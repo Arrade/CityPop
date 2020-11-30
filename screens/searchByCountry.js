@@ -9,7 +9,6 @@ import Background from '../assets/background.png';
 const SearchByCountry = ( { navigation} ) => {
 
     const [value, onChangeText] = React.useState('');
-    const [isLoading, setLoading] = useState(true);
     const [load, setLoad] = React.useState(false);
     const [noResult, showNoResultMsg] = React.useState(false);
 
@@ -24,7 +23,7 @@ const SearchByCountry = ( { navigation} ) => {
           .then((response) => {
             setLoad(false)
             // Handle illegal cases, to allow searches limited to letter only words
-            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
+            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/^\p{Lu}\p{L}*(?:[\s-]\p{Lu}\p{L}*)*$/)) {
                 navigation.navigate("topCities", {
                   data: response.geonames
                 });
@@ -34,7 +33,6 @@ const SearchByCountry = ( { navigation} ) => {
               }
           })
           .catch((error) => console.error(error))
-          .finally(() => setLoading(false));
       }
 
       // Fetches the search result's country code
@@ -50,7 +48,7 @@ const SearchByCountry = ( { navigation} ) => {
           .then((response) => {
             setLoad(false)
             // Handle illegal cases, to allow searches limited to letter only words
-            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
+            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/^\p{Lu}\p{L}*(?:[\s-]\p{Lu}\p{L}*)*$/)) {
                 fetchApi(response.geonames[0].countryCode)
             } else {
                 // Show message if no results are founds or illegal characters were used
@@ -59,7 +57,6 @@ const SearchByCountry = ( { navigation} ) => {
               }
           })
           .catch((error) => console.error(error))
-          .finally(() => setLoading(false));
       }
       // pressFunction to activate loading ActivityIndicator & call the asyncronous fetch function
       // Here we need to initially fetch the Country code first before fetching the actual cities after

@@ -21,7 +21,7 @@ const TopCities = ( {navigation, route} ) => {
             size={30}
             color='black'
         />
-        <Text style={{fontSize: 20, color: 'black'}}>Home</Text>
+        <Text style={styles.backIconText}>Home</Text>
         </View>
         </TouchableOpacity>
         </View>
@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
         opacity: 0.75,
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    backIconText: {
+      fontSize: 20, 
+      color: 'black'
     },
     touchable: {
         borderRadius: 20,
