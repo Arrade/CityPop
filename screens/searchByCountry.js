@@ -22,7 +22,7 @@ const SearchByCountry = ( { navigation} ) => {
           .then((response) => {
             setLoad(false)
             // Handle illegal cases, to allow searches limited to letter only words
-            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/^\p{Lu}\p{L}*(?:[\s-]\p{Lu}\p{L}*)*$/)) {
+            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/)) {
                 navigation.navigate("topCities", {
                   data: response.geonames
                 });
@@ -47,7 +47,7 @@ const SearchByCountry = ( { navigation} ) => {
           .then((response) => {
             setLoad(false)
             // Handle illegal cases, to allow searches limited to letter only words
-            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/^\p{Lu}\p{L}*(?:[\s-]\p{Lu}\p{L}*)*$/)) {
+            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/)) {
                 fetchApi(response.geonames[0].countryCode)
             } else {
                 // Show message if no results are founds or illegal characters were used
