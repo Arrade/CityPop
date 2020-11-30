@@ -5,6 +5,16 @@ The App allows you to search based on a city name to find that city's population
 
 or based on a country name to then choose between that corresponding country's biggest cities to get the choosen one's population count
 
+# Usage Example
+
+![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Homepage.png "Homepage")
+![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Citysearch.png "Citysearch")
+![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCity.png "PopulationFromCity")
+
+![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png "PopulationFromCountry")
+![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/TopCities.png "TopCities")
+![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png "PopulationFromCountry")
+
 # prerequisites
 Make sure you have the latest version of NodeJS installed, Download [here](https://nodejs.org/en/download/)
 
