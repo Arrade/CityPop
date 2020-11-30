@@ -7,6 +7,10 @@ or based on a country name to then choose between that corresponding country's b
 
 # Usage Example
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Homepage.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Citysearch.png)
+
 ![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Homepage.png "Homepage")
 ![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/Citysearch.png "Citysearch")
 ![alt text](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCity.png "PopulationFromCity")
