@@ -29,7 +29,7 @@ const SearchByCity = ( {navigation} ) => {
         //console.log(response.geonames);
         setLoad(false)
         // Handle illegal cases
-        if (response.totalResultsCount > 0 && arg != '') {
+        if (response.totalResultsCount > 0 && arg != '' && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
         navigation.navigate("population", {
           data: response.geonames[0]
         });

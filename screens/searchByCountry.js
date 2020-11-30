@@ -28,7 +28,7 @@ const SearchByCountry = ( { navigation} ) => {
             //return setData(json.geonames); // Outdated, change this
             setLoad(false)
             // Handle illegal cases
-            if (response.totalResultsCount > 0 && arg != '') {
+            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
                 navigation.navigate("topCities", {
                   data: response.geonames
                 });
@@ -51,7 +51,7 @@ const SearchByCountry = ( { navigation} ) => {
           .then((response) => {
             setLoad(false)
             // Handle illegal cases
-            if (response.totalResultsCount > 0 && arg != '') {
+            if (response.totalResultsCount > 0 && arg != ''  && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
                 fetchApi(response.geonames[0].countryCode)
             } else {
                 showNoResultMsg(true);

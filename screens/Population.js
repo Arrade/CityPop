@@ -31,7 +31,7 @@ const Population = ( {route, navigation} ) => {
         <View style={styles.content}>
         <View style={styles.innerContainer}>
 
-        <Text style={styles.title} onPress={() => navigation.navigate("topCities")}>Population of{data.toponymName}</Text>
+        <Text style={styles.title} onPress={() => navigation.navigate("topCities")}>Population of {data.toponymName}</Text>
 
         <View style={styles.populationContainer}>
             {/*
