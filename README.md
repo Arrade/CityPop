@@ -2,16 +2,19 @@
 Simple city population search app in React Native.
 
 The App allows you to search based on a city name to find that city's population count,
+
 or based on a country name to then choose between that corresponding country's biggest cities to get the choosen one's population count
 
 # prerequisites
 Make sure you have the latest version of NodeJS installed, Download [here](https://nodejs.org/en/download/)
+
 Confirm with:
 ```
 node -v
 ```
 
 Make sure you have the latest version of npm Installed, Download [here](https://nodejs.org/en/download/)
+
 Confirm with:
 ```
 npm -v
@@ -38,6 +41,7 @@ expo init project-name
  ```
  ### Additional Installments
  If prompted to, make sure to install any additional packages.
+ 
  One such common example is React Navigation:
  ```
  npm install --save react-navigation
@@ -57,8 +61,11 @@ expo init project-name
  
  ## Running the App through a simulator
  If you opt to run it through a simulater you can either:
+ 
  * Run it on an android device simulator through Android Studio
+ 
  or
+ 
  * Run it on an IOS device through Xcode Simulator
  
  
