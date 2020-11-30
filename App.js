@@ -10,10 +10,6 @@ import TopCities from './screens/TopCities';
 
 const Stack = createStackNavigator();
 
-const nothing = ({ current }) => ({
-	cardStyle: {}
-});
-
 function MyStack() {
 
   return (
@@ -23,7 +19,6 @@ function MyStack() {
         headerShown: false,
         gestureEnabled: true,
         gestureDirection: "horizontal",
-        //cardStyleInterpolator: nothing,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
       }}
     >

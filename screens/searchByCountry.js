@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ActivityIndicator, ImageBackground } from "react-native";
 import { Icon } from 'react-native-elements'
-import { TextInput, Image } from 'react-native';
-import { useEffect, useState } from 'react';
+import { TextInput } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Background from '../assets/background.png';
 

@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Input, ActivityIndicator, ImageBackground} from "react-native";
 import { Icon } from 'react-native-elements'
 import { TextInput } from 'react-native';
-import { useEffect, useState } from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Background from '../assets/background.png';
 
