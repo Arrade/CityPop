@@ -2,14 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet, ImageBackground, } from "react-native";
 import BlueButton from "../components/BlueButton";
 import { Icon } from 'react-native-elements'
-import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const TopCities = ( {navigation, route} ) => {
 
     const { data } = route.params;
 
     const image = { uri: "https://wallpapercave.com/wp/wp5594572.png" };
-    //console.log(data)
+
 
   return (
     <View style={styles.container}>
@@ -22,7 +22,6 @@ const TopCities = ( {navigation, route} ) => {
             name='home'
             size={30}
             color='black'
-            //onPress={() => navigation.navigate("home")}
         />
         <Text style={{fontSize: 20, color: 'black'}}>Home</Text>
         </View>
@@ -32,7 +31,7 @@ const TopCities = ( {navigation, route} ) => {
       <View style={styles.content}>
       
   <Text style={styles.title} onPress={() => navigation.navigate("population")}>Which city do you wish to lookup?</Text>
-      {data!=null && data.map((test, index) => <View key={test.geonameId} index={index} style={styles.button}><BlueButton onPress={() => navigation.navigate("population", {data: data[index]})} key={test.geonameId} style={styles.button}>{test.toponymName}</BlueButton></View>)}
+      {data!=null && data.map((object, index) => <View key={object.geonameId} index={index} style={styles.button}><BlueButton onPress={() => navigation.navigate("population", {data: data[index]})} key={object.geonameId} style={styles.button}>{object.toponymName}</BlueButton></View>)}
       </View>
       </ImageBackground>
     </View>
@@ -67,13 +66,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     container: {
-        //marginTop: 200,
-        //alignItems: "center",
+      
     },
     image: {
       width: '100%',
       height: '100%',
-      //alignItems: "center",
     },
     content: {
       marginTop: 50,

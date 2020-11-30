@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ActivityIndicator, ImageBackground } from "reac
 import { Icon } from 'react-native-elements'
 import { TextInput, Image } from 'react-native';
 import { useEffect, useState } from 'react';
-import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SearchByCountry = ( { navigation} ) => {
 
@@ -23,16 +23,14 @@ const SearchByCountry = ( { navigation} ) => {
         fetch('http://api.geonames.org/searchJSON?country=' + arg + '&featureClass=P&orderby=population&maxRows=3&username=weknowit', {signal: signal })
           .then((response) => response.json())
           .then((response) => {
-            //console.log(response);
-            console.log(response.geonames);
-            //return setData(json.geonames); // Outdated, change this
             setLoad(false)
-            // Handle illegal cases
+            // Handle illegal cases, to allow searches limited to letter only words
             if (response.totalResultsCount > 0 && arg != ''  && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
                 navigation.navigate("topCities", {
                   data: response.geonames
                 });
             } else {
+                // Show message if no results are founds or illegal characters were used
                 showNoResultMsg(true);
               }
           })
@@ -40,6 +38,8 @@ const SearchByCountry = ( { navigation} ) => {
           .finally(() => setLoading(false));
       }
 
+      // Fetches the search result's country code
+      // to then use fetchAPI in order to get that country's biggest cities
       function fetchCountryCode(arg) {
         
         const abortController = new AbortController()
@@ -50,10 +50,11 @@ const SearchByCountry = ( { navigation} ) => {
         .then((response) => response.json())
           .then((response) => {
             setLoad(false)
-            // Handle illegal cases
+            // Handle illegal cases, to allow searches limited to letter only words
             if (response.totalResultsCount > 0 && arg != ''  && arg.match(/(^([/ ]*|[A-Za-z])+[/ ]*)+/)) {
                 fetchApi(response.geonames[0].countryCode)
             } else {
+                // Show message if no results are founds or illegal characters were used
                 showNoResultMsg(true);
                 setTimeout(() => showNoResultMsg(false), 2000);
               }
@@ -61,27 +62,26 @@ const SearchByCountry = ( { navigation} ) => {
           .catch((error) => console.error(error))
           .finally(() => setLoading(false));
       }
-
+      // pressFunction to activate loading ActivityIndicator & call the asyncronous fetch function
+      // Here we need to initially fetch the Country code first before fetching the actual cities after
       const pressFunction = async (arg) => {
         setLoad(!load)
-        //await fetchApi(arg)
         await fetchCountryCode(arg)
       }
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={image} style={styles.image} fadeDuration={0}>
 
-      <View style={styles.iconBack}>
+      <ImageBackground source={image} style={styles.image} fadeDuration={0}>
+      <View style={styles.backIconContainer}>
       <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("home")}>
-      <View style={styles.iconBack2}>
+      <View style={styles.backIcon}>
       <Icon
         name='home'
         size={30}
         color='black'
-        //onPress={() => navigation.navigate("home")}
       />
-      <Text style={{fontSize: 20, color: 'black'}}>Home</Text>
+      <Text style={styles.backIconText}>Home</Text>
       </View>
       </TouchableOpacity>
       </View>
@@ -90,7 +90,7 @@ const SearchByCountry = ( { navigation} ) => {
       <View style={styles.innerContainer}>
 
       <Text style={styles.title}>Search With Country</Text>
-      <View style={styles.inputContainer2}>
+      <View style={styles.inputContainer}>
       <TextInput 
         clearTextOnFocus={true}
         clearButtonMode={'while-editing'}
@@ -104,7 +104,6 @@ const SearchByCountry = ( { navigation} ) => {
       <Icon
         name='search'
         size={60}
-        //onPress={() => fetchApi(value)}
         onPress={() => pressFunction(value)}
         />
         </View>
@@ -118,7 +117,7 @@ const SearchByCountry = ( { navigation} ) => {
 };
 
 const styles = StyleSheet.create({
-    iconBack: {
+    backIconContainer: {
         width: 120,
         height: 50,
         marginTop: 60,
@@ -134,25 +133,18 @@ const styles = StyleSheet.create({
     touchable: {
         borderRadius: 20,
     },
-    iconBack2: {
+    backIcon: {
         marginLeft: 10,
         flexDirection: 'row',
         alignItems: 'center',
     },
+    backIconText: {
+      fontSize: 20, 
+      color: 'black'
+    },
     container: {
-        //marginTop: 200,
-        //alignItems: "center",
     },
     icon: {
-        /*
-        width: 80,
-        height: 80,
-        alignItems: 'center',
-        justifyContent: "center",
-        borderWidth: 1,
-        borderColor: 'teal',
-        borderRadius: 50,
-        */
         marginTop: 20,
     },
     title: {
@@ -177,7 +169,7 @@ const styles = StyleSheet.create({
     content: {
       alignItems: 'center'
     },
-    inputContainer2: {
+    inputContainer: {
         marginTop: 20,
     },
     input: {
@@ -191,7 +183,6 @@ const styles = StyleSheet.create({
     image: {
       width: '100%',
       height: '100%',
-      //alignItems: "center",
     },
 })
 
