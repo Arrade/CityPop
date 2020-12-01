@@ -13,7 +13,7 @@ Homepage             |  Search By City | Population from City
 
 Search By Country             |  Top Cities | Population from Country
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/TopCities.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png)
+![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/CountrySearch.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/TopCities.png)   |  ![](https://github.com/Arrade/CityPop/blob/master/WalkthroughImages/PopulationFromCountry.png)
 
 # prerequisites
 Make sure you have the latest version of NodeJS installed, Download [here](https://nodejs.org/en/download/)
